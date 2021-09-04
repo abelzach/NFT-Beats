@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import Web3 from 'web3';
 import NFTbeats from '../build/NFTbeats.json'
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {Navbar } from 'react-bootstrap';
+import Home from './Home'
 class App extends Component {
 
   async componentWillMount() {
