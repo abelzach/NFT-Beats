@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Web3 from 'web3';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Navbar } from 'react-bootstrap';
 import { SpringSpinner } from 'react-epic-spinners';
+import Navbar from './Navbar';
 import Home from './Home';
 import Create from './Create';
 import Register from './Register';
@@ -93,8 +93,13 @@ class App extends Component {
 
   async verifyCreator(id) {
     this.setState({ loading: true });
-    const res = await this.state.nftb.methods.verifyCreator(id).call()
-    return res
+    const res = await this.state.nftb.methods.verifyCreator(id).call();
+    this.setState({ loading: false });
+    if (res[0] == "Address not recognized") {
+      window.alert("The artist of this track could not be verified");
+    } else {
+      window.alert("Artist: "+res[0]+"\nAddress: "+res[1]);
+    }
   }
 
   setPrice(id, price) {
@@ -158,11 +163,7 @@ class App extends Component {
     return (
       <div style={{ height: 800 }}>
         <Router>
-          <Navbar bg="dark" variant="dark">
-            <Navbar.Brand>
-              <h2>NFT-Beats</h2>
-            </Navbar.Brand>
-          </Navbar>
+          <Navbar />
 
           <Route exact path="/" render={props => (
               <React.Fragment>
@@ -192,12 +193,19 @@ class App extends Component {
             </React.Fragment>
           )} />    
 
-          <Route exact path="/tracks" render={props => (
+          <Route exact path="/alltracks" render={props => (
             <React.Fragment>
               {
               }
             </React.Fragment>
           )} />  
+
+          <Route exact path="/mytracks" render={props => (
+            <React.Fragment>
+              {
+              }
+            </React.Fragment>
+          )} />
 
           <Route exact path="/offersR" render={props => (
             <React.Fragment>

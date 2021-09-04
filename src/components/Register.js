@@ -33,7 +33,7 @@ class Register extends Component {
             
             <br/><br/>
             <Typography component="h1" variant="h5">
-                <h1 style={{color: 'white'}}>Register as New Music Artist</h1>                    
+                <h1 style={{color: 'white'}}>Register as New Music Artist/Composer</h1>                    
             </Typography>
             </center>
             <Container component="main" maxWidth="xs">

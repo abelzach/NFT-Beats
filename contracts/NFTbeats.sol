@@ -25,6 +25,7 @@ contract NFTbeats is ERC721 {
         bool isListed;
         string name;
         string filecid;
+        string aName;
         address artist;
         address payable owner;
     }
@@ -70,13 +71,13 @@ contract NFTbeats is ERC721 {
         external 
         view 
         idExists(_id)
-        returns (string memory) 
+        returns (string memory, address) 
     {
         address creator = tracks[_id].artist;
         if(bytes(artists[creator]).length > 0) {
-            return artists[creator];
+            return (artists[creator], creator);
         } else {
-            return "Address not recognized";
+            return("Address not recognized", address(0));
         }
     }
 
@@ -88,7 +89,7 @@ contract NFTbeats is ERC721 {
         tCount++;
         _safeMint(msg.sender, tCount);
         _setTokenURI(tCount, _filecid);
-        tracks[tCount] = Track(tCount, 0, false, _name, _filecid, msg.sender, msg.sender);
+        tracks[tCount] = Track(tCount, 0, false, _name, _filecid, artists[msg.sender], msg.sender, msg.sender);
         emit createdTrack(tCount, tracks[tCount].name, tracks[tCount].owner);
     }    
 

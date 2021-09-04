@@ -31,6 +31,7 @@ contract("Nfto", async (accounts) => {
         let event, b1, b2;
 
         before(async () => {
+            await nftb.registerArtist("JZX", { from: currentAcc });
             b1 = await nftb.balanceOf(currentAcc);
             const result = await nftb.createTrack("Test", "fweig23385t3dfa", { from: currentAcc });
             event = result.logs[1].args;
@@ -113,16 +114,10 @@ contract("Nfto", async (accounts) => {
     })
 
     describe("Verify track creator", async () => {
-        let artist;
-
-        before(async () => {
-            artist = accounts[0];
-            await nftb.registerArtist("JZX", { from: artist });
-        })
-
         it("verifies correct creator", async () => {
-            const creator = await nftb.verifyCreator(1);
-            assert.equal(creator, "JZX");
+            const res = await nftb.verifyCreator(1);
+            assert.equal(res[0], "JZX");
+            assert.equal(res[1], currentAcc);
         })
     })
 })
