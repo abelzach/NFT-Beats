@@ -29,6 +29,7 @@ contract NFTbeats is ERC721 {
 
     event createdTrack(uint id, string name, address owner);
     event setTrackPrice(uint id, uint newPrice, bool listed);
+    event boughtTrack(uint id, address buyer);
 
     function createTrack(
         string memory _name, 
@@ -53,4 +54,17 @@ contract NFTbeats is ERC721 {
         approve(address(this), _id);
         emit setTrackPrice(_id, tracks[_id].price, tracks[_id].isListed);
     } 
+  
+    function buyTrack(uint _id)
+        external
+        payable
+        idExists(_id) 
+    {
+        (bool paid,) = tracks[_id].owner.call{ value: msg.value }("");
+        require(paid == true, "Not sent");
+        _transfer(tracks[_id].owner, msg.sender, _id);
+        tracks[_id].owner = msg.sender;
+        tracks[_id].isListed = false;
+        emit boughtTrack(_id, msg.sender);
+    }
 }

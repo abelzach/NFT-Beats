@@ -53,12 +53,12 @@ contract("Nfto", async (accounts) => {
 
         before(async () => {
             await nftb.createTrack("Test", "fweig23385t3dfa", { from: currentAcc });
-            const result = await nftb.setPrice(1, web3.utils.toWei("0.5", 'Ether'), { from: currentAcc });
+            const result = await nftb.setPrice(1, web3.utils.toWei("0.5", "Ether"), { from: currentAcc });
             event = result.logs[1].args;
         })
 
         it("can set new price", async () => {
-            assert.equal(web3.utils.fromWei(event.newPrice.toString(), 'Ether'), 0.5);
+            assert.equal(web3.utils.fromWei(event.newPrice.toString(), "Ether"), 0.5);
         })
 
         it("listed for sale", async () => {
@@ -68,6 +68,21 @@ contract("Nfto", async (accounts) => {
         it("approves contract for transfer", async () => {
             const approvedAddr = await nftb.getApproved(1);
             assert.equal(approvedAddr, nftb.address);
+        })
+    })
+
+    describe("Purchase NFT tracks", async () => {
+        let b1, buyer;
+
+        before(async () => {
+            b1 = await web3.eth.getBalance(currentAcc);
+            buyer = accounts[1];
+            await nftb.buyTrack(1, { from: buyer, value: web3.utils.toWei("0.5", "Ether") });
+        })
+
+        it("pays the owner", async () => {
+            const b2 = await web3.eth.getBalance(currentAcc);
+            assert.equal(web3.utils.fromWei(b2.toString()) - web3.utils.fromWei(b2.toString(), 0.5));
         })
     })
 })
