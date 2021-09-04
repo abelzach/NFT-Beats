@@ -17,33 +17,22 @@ const WhiteTextTypography = withStyles({
 })(Typography);
 
 
-class Tracks extends Component {
-
+class Mytracks extends Component {
+    
     constructor(props) {
         super(props);
-        this.state = {
-            search: ''
-        };
+        this.priceinput = React.createRef();
     }
-
-    updateSearch(event) {
-        this.setState({search: event.target.value.substr(0,20)});
-    }  
 
     render() {
         const {classes} = this.props;
-
-        let filteredTracks = this.props.track.filter((track) => {
-              return track.name.indexOf(this.state.search) !== -1;
-            }
-        );
     
         return (
           <React.Fragment>
             <br/><br/>          
             <Typography component="h1" variant="h2" align="center" color="Secondary"  gutterBottom>
                 <WhiteTextTypography variant="h2"  >
-                    View Tracks/Songs
+                    Your Tracks/Songs
                 </WhiteTextTypography>
             </Typography>
             <br /><br/>
@@ -56,19 +45,14 @@ class Tracks extends Component {
                 justify="flex-start"
                 alignItems="flex-start"
             >
-                <h2 style={{color: "white"}}>Search for Tracks</h2>
                 <br/><br/>
-                <input type="text" class="form-control" value={this.state.search} onChange={this.updateSearch.bind(this)} />
-                <br/><br/>
-                { filteredTracks.map((track, key) => {
+                { this.props.mytracks.map((track, key) => {
                   return(
                     <React.Fragment>
                         <div class="coupon" key={key} >
                         <div className="card-header">
                         <h2 style={{color: "cornflowerblue"}}>{track.name}</h2>
-                        <small style={{color: "white"}}></small>
                         </div>
-                        <p style={{color: "black"}}>Artist/Composer: {track.aName}</p>
                         <ul id="postList" className="list-group list-group-flush">
                             <li key={key} className="list-group-item py-2">
                             <br></br>
@@ -76,6 +60,31 @@ class Tracks extends Component {
                                 <source src={`https://${track.filecid}.ipfs.dweb.link`} type="audio/mp3" />
                             </audio>
                             </li>
+                            <br/><br/>
+                            { !track.isListed &&
+                            <React.Fragment>
+                                <small style={{color: "white"}}>Not listed for auction/sale</small>
+                                <br/>
+                                <form onSubmit={(event)=>{
+                                    event.preventDefault();
+                                    const price = this.priceinput.current.value;
+                                    this.props.setPrice(track.id, price);
+                                }}>
+                                    <div class="form-group mx-sm-5 mb-2">                                  
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" ref={this.priceinput} placeholder="Enter a price for auction/sale (CELO)" />
+                                    </div>
+                                    <br/>
+                                    <button type="submit" class="btn btn-info mb-3">List for Sale</button>
+                                </form>
+                            </React.Fragment>
+                            }
+                            { track.isListed &&
+                            <React.Fragment>
+                                <div class="form-group mx-sm-5 mb-2">                                  
+                                    <p style={{color: "slateblue"}}>Listed in auction for {window.web3.utils.fromWei(track.price.toString())}} CELO</p>
+                                </div>
+                            </React.Fragment>
+                            }
                         </ul>
                         </div>
                         <p>&nbsp;&nbsp;</p>
@@ -91,4 +100,4 @@ class Tracks extends Component {
     }
 }
 
-export default withStyles(useStyles)(Tracks);
+export default withStyles(useStyles)(Mytracks);

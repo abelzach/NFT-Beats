@@ -10,6 +10,7 @@ import Tracks from './Tracks';
 import Verify from './Verify';
 import NFTbeats from '../build/NFTbeats.json';
 import './App.css';
+import Mytracks from './Mytracks';
 
 
 class App extends Component {
@@ -206,6 +207,7 @@ class App extends Component {
           <Route exact path="/mytracks" render={props => (
             <React.Fragment>
               {
+                <Mytracks mytracks={this.state.mytracks} setPrice={this.setPrice} />
               }
             </React.Fragment>
           )} />

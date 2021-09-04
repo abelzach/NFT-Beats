@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Alert } from 'react-bootstrap';
 
 class Verify extends Component {
 
@@ -36,5 +37,6 @@ class Verify extends Component {
         );
     }
 }
+import { Alert } from 'react-bootstrap';
 
 export default Verify;
