@@ -16,6 +16,7 @@ class App extends Component {
       }
       axios.post("https://api.nft.storage/upload", this.fileinput.current.files[0], options)      
       .then((result)=>{
+        this.props.createTrack(this.nameinput.current.value, result.data.value.cid)
         console.log(result.data.value.cid);
       })
       .catch((error) => {

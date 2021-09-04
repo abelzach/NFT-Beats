@@ -5,6 +5,7 @@ import NFTbeats from '../build/NFTbeats.json'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {Navbar } from 'react-bootstrap';
 import Home from './Home'
+import Create from './Create'
 class App extends Component {
 
   async componentWillMount() {
@@ -167,6 +168,7 @@ class App extends Component {
           <Route exact path="/create" render={props => (
             <React.Fragment>
               {
+                <Create createTrack={this.createTrack}/>
               }
             </React.Fragment>
           )} />    
