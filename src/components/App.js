@@ -84,9 +84,52 @@ class App extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-          <h1>NFT-Beats</h1>
-        </nav>
+        <Router>
+        <Navbar bg="dark" variant="dark">
+        <Navbar.Brand>
+          <h2>NFT Beats</h2>
+          </Navbar.Brand>
+        </Navbar>
+        <Route exact path="/" render={props => (
+            <React.Fragment>
+              {
+               <Home/>
+              }
+            </React.Fragment>
+          )} />    
+          <Route exact path="/register" render={props => (
+            <React.Fragment>
+              {
+              }
+            </React.Fragment>
+          )} />  
+          <Route exact path="/create" render={props => (
+            <React.Fragment>
+              {
+              }
+            </React.Fragment>
+          )} />    
+          <Route exact path="/tracks" render={props => (
+            <React.Fragment>
+              {
+              }
+            </React.Fragment>
+          )} />  
+          <Route exact path="/offersR" render={props => (
+            <React.Fragment>
+              {
+              }
+            </React.Fragment>
+          )} />  
+          <Route exact path="/offersP" render={props => (
+            <React.Fragment>
+              {
+              }
+            </React.Fragment>
+          )} />  
+          
+        </Router>
+        
       </div>
     );
   }

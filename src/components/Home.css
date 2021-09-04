@@ -1,0 +1,27 @@
+.home{
+    height: 70vh;
+}
+.heading-container{
+    color:rgb(233, 216, 141);
+    float:left;
+    display: center;
+    flex-direction: center;
+    
+}
+img {
+  border-radius: 50%;
+}
+.heading-1{
+   font-size: 40px;
+    padding: 30px;
+    margin-top: 40%;
+}
+.card-container{
+    float:right;
+    display: flex;
+  
+}
+.cc{
+    color:rgb(157, 221, 165);
+}
+
