@@ -61,12 +61,65 @@ class App extends Component {
     }
   }
 
+  createTrack(name, filecid) {
+    this.setState({ loading: true })
+    this.state.nftb.methods.createTrack(name, filecid).send({ from: this.state.account })
+    .once('confirmation', (n, receipt) => {
+      this.setState({ loading: false })
+      window.location.reload()
+    })
+  }
   
+  registerArtist(name) {
+    this.setState({ loading: true })
+    this.state.nftb.methods.registerArtist(name).send({ from: this.state.account })
+    .once('confirmation', (n, receipt) => {
+      this.setState({ loading: false })
+      window.location.reload()
+    })
+  }
 
-  
+  async verifyCreator(id) {
+    this.setState({ loading: true })
+    const res = await this.state.nftb.methods.verifyCreator(id).call()
+    return res
+  }
 
-  
+  setPrice(id, price) {
+    this.setState({ loading: true })
+    this.state.nftb.methods.setPrice(id, window.web3.utils.toWei(price.toString(), 'ether')).send({ from: this.state.account })
+    .once('confirmation', (n, receipt) => {
+      this.setState({ loading: false })
+      window.location.reload()
+    })
+  }
 
+  makeOffer(id, amount) {
+    this.setState({ loading: true })
+    this.state.nftb.methods.makeOffer(id, window.web3.utils.toWei(amount.toString(), 'ether')).send({ from: this.state.account })
+    .once('confirmation', (n, receipt) => {
+      this.setState({ loading: false })
+      window.location.reload()
+    })
+  }
+
+  approveOffer(id) {
+    this.setState({ loading: true })
+    this.state.nftb.methods.approveOffer(id).send({ from: this.state.account })
+    .once('confirmation', (n, receipt) => {
+      this.setState({ loading: false })
+      window.location.reload()
+    })
+  }
+
+  buyTrack(id) {
+    this.setState({ loading: true })
+    this.state.nftb.methods.buyTrack(id).send({ from: this.state.account })
+    .once('confirmation', (n, receipt) => {
+      this.setState({ loading: false })
+      window.location.reload()
+    })
+  }
 
   constructor(props) {
     super(props)
@@ -78,8 +131,14 @@ class App extends Component {
       receivedOffers: [],
       loading: false
     }
+    this.registerArtist = this.registerArtist.bind(this)
+    this.verifyCreator = this.verifyCreator.bind(this)
+    this.createTrack = this.createTrack.bind(this)
+    this.setPrice = this.setPrice.bind(this)
+    this.makeOffer = this.makeOffer.bind(this)
+    this.approveOffer = this.approveOffer.bind(this)
+    this.buyTrack = this.buyTrack.bind(this)
 
-    
   }
   render() {
     return (
