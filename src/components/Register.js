@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -10,8 +9,6 @@ import {
   CardContent,
   CardHeader
 } from "@material-ui/core/";
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
 
 
 const WhiteTextTypography = withStyles({
@@ -25,21 +22,18 @@ class Register extends Component {
    constructor(props) {
     super(props);
     this.nameinput = React.createRef();
-  }
-
-  
+  }  
 
   render() {
       return(
-        <div >
-         
+        <div >         
           <center>
             <br/><br/>
-            <h1 style={{color: 'white'}}><strong>NFT Beats</strong></h1>
+            <h1 style={{color: 'white'}}><strong>NFT-Beats</strong></h1>
             
             <br/><br/>
             <Typography component="h1" variant="h5">
-                <h1 style={{color: 'white'}}>Register as new Artist</h1>                    
+                <h1 style={{color: 'white'}}>Register as New Music Artist</h1>                    
             </Typography>
             </center>
             <Container component="main" maxWidth="xs">
