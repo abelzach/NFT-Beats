@@ -1,3 +1,8 @@
 .cc {
     text-align: center;   
   }
+.center {
+    position: relative;
+    top:30%;
+    left:45%; 
+}

@@ -40,11 +40,13 @@ class Create extends Component {
     return (
       <div>
         <center>
+          <br/>
         <h1 style={{color: 'white'}}><strong>NFT-Beats</strong></h1>            
-          <br/><br/>
+          <br/><br/><br/>
           <Typography component="h1" variant="h5">
               <h1 style={{color: 'white'}}>Create a New NFT</h1>                    
           </Typography>
+          <br/>
         <div style={{width:700, padding: "10px", borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", backgroundColor: "#F5F5F5"}} >
           <div style={{width:600}}>
             <form onSubmit={this.onSubmit} noValidate autoComplete="off">

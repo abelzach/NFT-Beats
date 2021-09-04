@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { withStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core/";
+import Typography from "@material-ui/core/Typography"; 
 
 const useStyles = ({
     root: {
@@ -38,14 +39,9 @@ class Mytracks extends Component {
             <br /><br/>
             <center>
             <div className={classes.root}>
-            <Grid
-                container
-                spacing={10}
-                direction="row"
-                justify="flex-start"
-                alignItems="flex-start"
-            >
+            <Grid>
                 <br/><br/>
+                <div style={{ width: 800 }}>
                 { this.props.mytracks.map((track, key) => {
                   return(
                     <React.Fragment>
@@ -63,7 +59,7 @@ class Mytracks extends Component {
                             <br/><br/>
                             { !track.isListed &&
                             <React.Fragment>
-                                <small style={{color: "white"}}>Not listed for auction/sale</small>
+                                <h4 style={{color: "white"}}>Not listed for auction/sale</h4>
                                 <br/>
                                 <form onSubmit={(event)=>{
                                     event.preventDefault();
@@ -81,7 +77,7 @@ class Mytracks extends Component {
                             { track.isListed &&
                             <React.Fragment>
                                 <div class="form-group mx-sm-5 mb-2">                                  
-                                    <p style={{color: "slateblue"}}>Listed in auction for {window.web3.utils.fromWei(track.price.toString())}} CELO</p>
+                                    <h4 style={{color: "white"}}>Listed in auction for {window.web3.utils.fromWei(track.price.toString())} CELO</h4>
                                 </div>
                             </React.Fragment>
                             }
@@ -91,7 +87,7 @@ class Mytracks extends Component {
                     </React.Fragment>
                   )
                 })}
-
+                </div>
             </Grid>
             </div>
             </center>

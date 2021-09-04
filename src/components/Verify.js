@@ -11,7 +11,7 @@ class Verify extends Component {
         }
     }
 
-    updateSearch(event) {
+    async updateSearch(event) {
         this.setState({search: event.target.value.substr(0,20)});
         let res = await this.props.verifyCreator(this.state.search);
         this.setState({ found: res });
@@ -26,17 +26,18 @@ class Verify extends Component {
                 <h2 style={{textAlign: "center", color: "white", fontSize:"45px"}}>Verify Certificates</h2>
                 <br/><br/><br/><br/>
                 <center>
+                <div style={{ width: 1000 }}>
                     <input type="text" class="form-control" value={this.state.search} onChange={this.updateSearch.bind(this)} placeholder="Enter NFT ID to search" />
                     <br/><br/>
                     <Alert variant="primary">
                         <h4 style={{color: "black", fontSize:"30px"}}>{this.state.found}</h4>
                     </Alert>
+                    </div>
                 </center>
                 <br/>                        
             </React.Fragment>
         );
     }
 }
-import { Alert } from 'react-bootstrap';
 
 export default Verify;

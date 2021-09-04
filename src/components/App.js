@@ -199,7 +199,9 @@ class App extends Component {
           <Route exact path="/alltracks" render={props => (
             <React.Fragment>
               {
-                <Tracks tracks={this.state.tracks} />
+                this.state.loading
+                ? <div class="center"><SpringSpinner size="100" color="white" /></div>
+               :<Tracks tracks={this.state.tracks} />
               }
             </React.Fragment>
           )} />  
@@ -207,7 +209,9 @@ class App extends Component {
           <Route exact path="/mytracks" render={props => (
             <React.Fragment>
               {
-                <Mytracks mytracks={this.state.mytracks} setPrice={this.setPrice} />
+                this.state.loading
+                ? <div class="center"><SpringSpinner size="100" color="white" /></div>
+                :<Mytracks mytracks={this.state.mytracks} setPrice={this.setPrice} />
               }
             </React.Fragment>
           )} />
@@ -215,6 +219,7 @@ class App extends Component {
           <Route exact path="/verify" render={props => (
             <React.Fragment>
               {
+               
                 <Verify verifyCreator={this.verifyCreator} />
               }
             </React.Fragment>

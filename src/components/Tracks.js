@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { withStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core/";
+import Typography from "@material-ui/core/Typography"; 
 
 const useStyles = ({
     root: {
@@ -33,7 +34,7 @@ class Tracks extends Component {
     render() {
         const {classes} = this.props;
 
-        let filteredTracks = this.props.track.filter((track) => {
+        let filteredTracks = this.props.tracks.filter((track) => {
               return track.name.indexOf(this.state.search) !== -1;
             }
         );
@@ -48,14 +49,14 @@ class Tracks extends Component {
             </Typography>
             <br /><br/>
             <center>
+            
             <div className={classes.root}>
+            <center>
             <Grid
-                container
-                spacing={10}
-                direction="row"
-                justify="flex-start"
-                alignItems="flex-start"
+               
             >
+                 
+                <div style={{ width: 800 }}>
                 <h2 style={{color: "white"}}>Search for Tracks</h2>
                 <br/><br/>
                 <input type="text" class="form-control" value={this.state.search} onChange={this.updateSearch.bind(this)} />
@@ -68,7 +69,9 @@ class Tracks extends Component {
                         <h2 style={{color: "cornflowerblue"}}>{track.name}</h2>
                         <small style={{color: "white"}}></small>
                         </div>
-                        <p style={{color: "black"}}>Artist/Composer: {track.aName}</p>
+                        <h4 style={{color: "white"}}>Artist/Composer: {track.aName}</h4>
+                        <br/>
+                        <h5 style={{color: "white"}}>NFT ID: {track.id.toString()}</h5>
                         <ul id="postList" className="list-group list-group-flush">
                             <li key={key} className="list-group-item py-2">
                             <br></br>
@@ -82,8 +85,11 @@ class Tracks extends Component {
                     </React.Fragment>
                   )
                 })}
-
+                
+                </div>
+                
             </Grid>
+            </center>
             </div>
             </center>
         </React.Fragment>
