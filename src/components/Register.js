@@ -25,7 +25,6 @@ class Register extends Component {
    constructor(props) {
     super(props);
     this.nameinput = React.createRef();
-    this.handleChange = this.handleChange.bind(this)
   }
 
   

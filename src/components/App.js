@@ -5,7 +5,9 @@ import NFTbeats from '../build/NFTbeats.json'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {Navbar } from 'react-bootstrap';
 import Home from './Home'
+import { SpringSpinner } from 'react-epic-spinners';
 import Create from './Create'
+import Register from './Register'
 class App extends Component {
 
   async componentWillMount() {
@@ -162,13 +164,18 @@ class App extends Component {
           <Route exact path="/register" render={props => (
             <React.Fragment>
               {
+                this.state.loading
+                ? <div class="center"><SpringSpinner size="100" color="red" /></div>
+                :<Register registerArtist={this.registerArtist}/>
               }
             </React.Fragment>
           )} />  
           <Route exact path="/create" render={props => (
             <React.Fragment>
               {
-                <Create createTrack={this.createTrack}/>
+                this.state.loading
+                ? <div class="center"><SpringSpinner size="100" color="red" /></div>
+                :<Create createTrack={this.createTrack}/>
               }
             </React.Fragment>
           )} />    

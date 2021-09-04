@@ -38,7 +38,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
           <h1>NFT-Beats</h1>
           <center>
         <div style={{width:700, padding: "10px", borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", backgroundColor: '#00e6e6'}} >
@@ -68,7 +67,6 @@ class App extends Component {
           </div>
         </div>
         </center>
-        </nav>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React from "react";
 import Particles from 'react-particles-js';
-import "./home.css";
+import "./Home.css";
 import logo from '../logo.png'
 import pic from '../pic.jpg';
 export default function Home() {
