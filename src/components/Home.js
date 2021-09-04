@@ -3,6 +3,7 @@ import Particles from 'react-particles-js';
 import "./Home.css";
 import logo from '../logo.png'
 import pic from '../pic.jpg';
+
 export default function Home() {
   return (
     <div>

@@ -6,6 +6,8 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Create from './Create';
 import Register from './Register';
+import Tracks from './Tracks';
+import Verify from './Verify';
 import NFTbeats from '../build/NFTbeats.json';
 import './App.css';
 
@@ -96,9 +98,9 @@ class App extends Component {
     const res = await this.state.nftb.methods.verifyCreator(id).call();
     this.setState({ loading: false });
     if (res[0] == "Address not recognized") {
-      window.alert("The artist of this track could not be verified");
+      return "The creator of this track could not be verified";
     } else {
-      window.alert("Artist: "+res[0]+"\nAddress: "+res[1]);
+      return "Artist/Composer: "+res[0]+"  Address: "+res[1];
     }
   }
 
@@ -196,6 +198,7 @@ class App extends Component {
           <Route exact path="/alltracks" render={props => (
             <React.Fragment>
               {
+                <Tracks tracks={this.state.tracks} />
               }
             </React.Fragment>
           )} />  
@@ -207,9 +210,10 @@ class App extends Component {
             </React.Fragment>
           )} />
 
-          <Route exact path="/offersR" render={props => (
+          <Route exact path="/verify" render={props => (
             <React.Fragment>
               {
+                <Verify verifyCreator={this.verifyCreator} />
               }
             </React.Fragment>
           )} />  

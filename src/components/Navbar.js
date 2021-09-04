@@ -13,6 +13,7 @@ export default function NavBar() {
                 <Nav className="me-auto">
                     <Nav.Link href="/register">Register</Nav.Link>&nbsp;
                     <Nav.Link href="/create">Create new NFT</Nav.Link>&nbsp;
+                    <Nav.Link href="/verify">Verify</Nav.Link>&nbsp;
                     <NavDropdown title="Tracks" id="collasible-nav-dropdown">
                         <NavDropdown.Item href="alltracks">All tracks</NavDropdown.Item>
                         <NavDropdown.Divider />
