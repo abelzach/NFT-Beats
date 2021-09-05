@@ -1,11 +1,14 @@
 # NFT-Beats
-A Decentralized platform to tokenize audio tracks and songs and auction/sell them.
+A Decentralized platform for music artists and composers to tokenize their audio tracks and songs as NFTs and also auction/sell them.
 
 ![logo](/src/logo.png?raw=true)
 
-<br/>
 
 #### [Smart Contract deployed on Celo Alfajores Testnet](https://alfajores-blockscout.celo-testnet.org/address/0x33d5C607a561a40756590b4a11dCC7fBfF235018)
+
+<br/>
+
+The NFT-Beats decentralized application is built using Celo, IPFS and Filecoin. New users can register on the DApp by providing their name/pseudonym, and this is stored on the blockchain along with their corresponding address. Once registered, the artists can upload their content and mint NFTs corresponding to it. This assigns a unique ownership to the content, the record of which is stored on the blockchain. The off-chain data of these NFTs are stored in a decentralized manner on IPFS and Filecoin, via NFT.Storage. Since the querying of data is done based on the actual content, it is hence possible to identify and prevent duplication of content and catch fraud. This also makes it possible for people to verify if the work is from the original artist, by checking which address the track/song NFT was minted from. Similarly music artists can claim that they are the original creator of any particular track, by virtue of the ownership verification feature in the DApp. The DApp also allows artists to list their NFTs for sale/auction at a price that they prefer. Public users of the DApp can then placed bids and buy these NFTs by paying the amount in CELO. This will be helpful for artists to generate additional revenue, without the need for intermediaries or paying third party fees. 
 
 <br/>
 
