@@ -14,7 +14,7 @@ The NFT-Beats decentralized application is built using Celo, IPFS and Filecoin. 
 
 ## Steps to Run NFT-Beats DApp
 
-### Install Dependencies
+### Install Requirements
 
 Node JS - [node](https://nodejs.org/en/download/)
 
